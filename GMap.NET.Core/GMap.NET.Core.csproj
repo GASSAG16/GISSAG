@@ -305,7 +305,7 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Demo.WindowsForms\GISSAG_WindowsForms.csproj">
+    <ProjectReference Include="..\WindowsForms\GISSAG_WindowsForms.csproj">
       <Project>{a2e07a76-8b2c-41a2-b23e-ea31ae94d706}</Project>
       <Name>GISSAG_WindowsForms</Name>
     </ProjectReference>
