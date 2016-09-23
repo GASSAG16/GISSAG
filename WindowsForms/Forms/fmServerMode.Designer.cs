@@ -58,9 +58,9 @@
             this.lbKoordiXPassanger = new System.Windows.Forms.Label();
             this.lbCount = new System.Windows.Forms.Label();
             this.requestTracksCountBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lbKoordiY = new System.Windows.Forms.Label();
-            this.requestTracksRoutesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lbKoordiX = new System.Windows.Forms.Label();
+            this.requestTracksRoutesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lbKoordiY = new System.Windows.Forms.Label();
             this.lbTheNameOfTheStop = new System.Windows.Forms.Label();
             this.requestTracksRoutesTableAdapter = new WindowsForms.GISSIGDataTableAdapters.requestTracksRoutesTableAdapter();
             this.tableAdapterManager = new WindowsForms.GISSIGDataTableAdapters.TableAdapterManager();
@@ -245,12 +245,12 @@
             this.panel3.Controls.Add(this.lbKoordiYPassanger);
             this.panel3.Controls.Add(this.lbKoordiXPassanger);
             this.panel3.Controls.Add(this.lbCount);
-            this.panel3.Controls.Add(this.lbKoordiY);
             this.panel3.Controls.Add(this.lbKoordiX);
+            this.panel3.Controls.Add(this.lbKoordiY);
             this.panel3.Location = new System.Drawing.Point(13, 844);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(274, 34);
+            this.panel3.Size = new System.Drawing.Size(439, 56);
             this.panel3.TabIndex = 49;
             // 
             // lbCountCoordinatPassanger
@@ -280,7 +280,7 @@
             this.lbKoordiYPassanger.AutoSize = true;
             this.lbKoordiYPassanger.BackColor = System.Drawing.Color.Transparent;
             this.lbKoordiYPassanger.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.requestPassangerStopBindingSource, "KoordiY", true));
-            this.lbKoordiYPassanger.Location = new System.Drawing.Point(4, 31);
+            this.lbKoordiYPassanger.Location = new System.Drawing.Point(141, 31);
             this.lbKoordiYPassanger.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbKoordiYPassanger.Name = "lbKoordiYPassanger";
             this.lbKoordiYPassanger.Size = new System.Drawing.Size(129, 22);
@@ -297,7 +297,7 @@
             this.lbKoordiXPassanger.AutoSize = true;
             this.lbKoordiXPassanger.BackColor = System.Drawing.Color.Transparent;
             this.lbKoordiXPassanger.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.requestPassangerStopBindingSource, "KoordiX", true));
-            this.lbKoordiXPassanger.Location = new System.Drawing.Point(141, 31);
+            this.lbKoordiXPassanger.Location = new System.Drawing.Point(4, 31);
             this.lbKoordiXPassanger.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbKoordiXPassanger.Name = "lbKoordiXPassanger";
             this.lbKoordiXPassanger.Size = new System.Drawing.Size(129, 22);
@@ -321,41 +321,41 @@
             this.requestTracksCountBindingSource.DataMember = "requestTracksCount";
             this.requestTracksCountBindingSource.DataSource = this.gISSIGData;
             // 
-            // lbKoordiY
+            // lbKoordiX
             // 
-            this.lbKoordiY.AutoSize = true;
-            this.lbKoordiY.BackColor = System.Drawing.Color.Transparent;
-            this.lbKoordiY.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.requestTracksRoutesBindingSource, "KoordiY", true));
-            this.lbKoordiY.Location = new System.Drawing.Point(4, 9);
-            this.lbKoordiY.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbKoordiY.Name = "lbKoordiY";
-            this.lbKoordiY.Size = new System.Drawing.Size(129, 22);
-            this.lbKoordiY.TabIndex = 1;
-            this.lbKoordiY.Text = "Координата Y";
+            this.lbKoordiX.AutoSize = true;
+            this.lbKoordiX.BackColor = System.Drawing.Color.Transparent;
+            this.lbKoordiX.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.requestTracksRoutesBindingSource, "KoordiX", true));
+            this.lbKoordiX.Location = new System.Drawing.Point(4, 9);
+            this.lbKoordiX.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbKoordiX.Name = "lbKoordiX";
+            this.lbKoordiX.Size = new System.Drawing.Size(129, 22);
+            this.lbKoordiX.TabIndex = 1;
+            this.lbKoordiX.Text = "Координата X";
             // 
             // requestTracksRoutesBindingSource
             // 
             this.requestTracksRoutesBindingSource.DataMember = "requestTracksRoutes";
             this.requestTracksRoutesBindingSource.DataSource = this.gISSIGData;
             // 
-            // lbKoordiX
+            // lbKoordiY
             // 
-            this.lbKoordiX.AutoSize = true;
-            this.lbKoordiX.BackColor = System.Drawing.Color.Transparent;
-            this.lbKoordiX.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.requestTracksRoutesBindingSource, "KoordiX", true));
-            this.lbKoordiX.Location = new System.Drawing.Point(141, 9);
-            this.lbKoordiX.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbKoordiX.Name = "lbKoordiX";
-            this.lbKoordiX.Size = new System.Drawing.Size(129, 22);
-            this.lbKoordiX.TabIndex = 0;
-            this.lbKoordiX.Text = "Координата X";
+            this.lbKoordiY.AutoSize = true;
+            this.lbKoordiY.BackColor = System.Drawing.Color.Transparent;
+            this.lbKoordiY.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.requestTracksRoutesBindingSource, "KoordiY", true));
+            this.lbKoordiY.Location = new System.Drawing.Point(141, 9);
+            this.lbKoordiY.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbKoordiY.Name = "lbKoordiY";
+            this.lbKoordiY.Size = new System.Drawing.Size(129, 22);
+            this.lbKoordiY.TabIndex = 0;
+            this.lbKoordiY.Text = "Координата Y";
             // 
             // lbTheNameOfTheStop
             // 
             this.lbTheNameOfTheStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbTheNameOfTheStop.AutoSize = true;
             this.lbTheNameOfTheStop.BackColor = System.Drawing.Color.Transparent;
-            this.lbTheNameOfTheStop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.requestPassangerStopBindingSource, "Street", true));
+            this.lbTheNameOfTheStop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.requestPassangerStopBindingSource, "TheNameOfTheStop", true));
             this.lbTheNameOfTheStop.Location = new System.Drawing.Point(13, 818);
             this.lbTheNameOfTheStop.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTheNameOfTheStop.Name = "lbTheNameOfTheStop";
@@ -497,8 +497,8 @@
         private System.Windows.Forms.ToolStripMenuItem lbOnStreetAvenueEtc;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lbCount;
-        private System.Windows.Forms.Label lbKoordiY;
         private System.Windows.Forms.Label lbKoordiX;
+        private System.Windows.Forms.Label lbKoordiY;
         private GISSIGData gISSIGData;
         private System.Windows.Forms.BindingSource requestTracksRoutesBindingSource;
         private GISSIGDataTableAdapters.requestTracksRoutesTableAdapter requestTracksRoutesTableAdapter;

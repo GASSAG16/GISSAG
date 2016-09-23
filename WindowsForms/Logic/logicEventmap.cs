@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
-using System.IO;
 using System.Windows.Forms;
 using WindowsForms.CustomMarkers;
 using GMap.NET.MapProviders;
 using GMap.NET;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
-using System.Diagnostics;
-using WindowsForms;
 
 
 
@@ -33,17 +28,8 @@ namespace WindowsForms.Forms
 
         ContextMenu markerMenu = new ContextMenu();
         internal GMapOverlay line = new GMapOverlay();
-        // Прочее
-        //readonly Random rnd = new Random();
-        //readonly DescendingComparer ComparerIpStatus = new DescendingComparer();
-        //ContextMenu markerMenu = new ContextMenu();
-        //GMapMarkerRect CurentRectMarker=null;
-        //GMarkerGoogle currentMarker = null;
-        bool isMouseDown = false;
-        //GMapMarker currentTransport = null;
-
-        // Полигон
-        //GMapPolygon polygon;
+               
+        //bool isMouseDown = false;
 
         public void OnMarker(Map mapen, GMapMarker item, MouseEventArgs e, GMapMarker currentTransport)
         {
@@ -98,7 +84,7 @@ namespace WindowsForms.Forms
         }
         public void MouseMove(MouseEventArgs e, GMapMarkerRect CurentRectMarker, Map mapen, GMarkerGoogle currentMarker, GMapPolygon polygon, bool isMouseDown)
         {
-            if (e.Button == MouseButtons.Left && isMouseDown)//GMarkerGoogle currentMarker, GMapPolygon polygon, bool isMouseDown
+            if (e.Button == MouseButtons.Left && isMouseDown)
             {
                 if (CurentRectMarker == null)
                 {

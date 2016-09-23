@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Globalization;
-using System.IO;
 using System.Windows.Forms;
 using WindowsForms.CustomMarkers;
 using GMap.NET.MapProviders;
-using GMap.NET;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
-using System.Diagnostics;
 using WindowsForms.Logic;
-using WindowsForms.Forms;
-using WindowsForms;
 
 
 namespace WindowsForms.Forms
@@ -51,7 +43,7 @@ namespace WindowsForms.Forms
             settingsGMapControl();
         }
 
-        public void settingsGMapControl()
+        private void settingsGMapControl()
         {
             if (!GMapControl.IsDesignerHosted)
             {
@@ -178,33 +170,13 @@ namespace WindowsForms.Forms
 
         private void lbAboitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var fmAbout = new AboutGASSAG();
+            var fmAbout = new fmAboutGASSAG();
             fmAbout.ShowDialog();
         }
 
         private void SamaPrograma_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
-        }
-
-        private void SamaPrograma_Load(object sender, EventArgs e)
-        {
-            //panel1.Hide();
-
-            //GMapOverlay line = new GMapOverlay();
-            //mapen.Overlays.Add(line);
-
-            //List<PointLatLng> spisok = new List<PointLatLng>();                 // Формируем в цикле список координат
-            //{
-            //    StreamReader ReadFile = File.OpenText("CenterOkrug.txt");
-            //    Sokr(spisok, ReadFile);
-            //}
-            //GMapRoute L = new GMapRoute(spisok, "линия");
-            //L.Stroke.Width = 5;
-            //L.Stroke.Color = Color.Red;                                     // Настройка линии
-            //line.Routes.Add(L);
-            //mapen.ZoomAndCenterRoute(L);
-            //mapen.Zoom = 15;
         }
 
         private void TransportToolStripMenuItem_Click(object sender, EventArgs e)

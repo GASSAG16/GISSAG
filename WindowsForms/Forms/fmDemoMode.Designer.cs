@@ -316,7 +316,6 @@
             this.Text = "Добро пожаловать в программу GISSAG";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SamaPrograma_FormClosed);
-            this.Load += new System.EventHandler(this.SamaPrograma_Load);
             this.ssMenu.ResumeLayout(false);
             this.ssMenu.PerformLayout();
             this.paInfo.ResumeLayout(false);

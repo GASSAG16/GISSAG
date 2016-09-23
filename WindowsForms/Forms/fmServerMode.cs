@@ -1,33 +1,12 @@
-﻿//////using Demo.WindowsForms.CustomMarkers;
-using WindowsForms.Logic;
+﻿using WindowsForms.Logic;
 using WindowsForms.Logic.SQL;
-using System.Linq;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Globalization;
-using System.IO;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Threading;
 using System.Windows.Forms;
-using System.Xml;
 using WindowsForms.CustomMarkers;
-using System.Text;
 using GMap.NET.MapProviders;
-using System.Reflection;
-using System.Text.RegularExpressions;
 using GMap.NET;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
-using GMap.NET.WindowsForms.ToolTips;
-using System.Data.SqlClient;
-using WindowsForms;
 
 namespace WindowsForms.Forms
 {
@@ -58,23 +37,6 @@ namespace WindowsForms.Forms
 
         #endregion
 
-        // Слои 
-        //readonly GMapOverlay top = new GMapOverlay();
-        //internal readonly GMapOverlay objects = new GMapOverlay("objects");     // объекты
-        //internal readonly GMapOverlay routes = new GMapOverlay("routes");       // Дороги
-        //internal readonly GMapOverlay polygons = new GMapOverlay("polygons");   // Полигоны
-        //internal readonly GMapOverlay marshryt = new GMapOverlay("marshryt");   // Маршруты
-        //internal readonly GMapOverlay okruga = new GMapOverlay("okruga");       // Округа
-
-        //// Прочее
-        //readonly Random rnd = new Random();
-        //readonly DescendingComparer ComparerIpStatus = new DescendingComparer();
-        //bool isMouseDown = false;
-
-        //ContextMenu markerMenu = new ContextMenu();
-        //GMarkerGoogle currentMarker;
-        //GMapMarker currentTransport;
-        ContextMenu markerMenu = new ContextMenu();
         logicShow StationsANDRoute = new logicShow();
         fmImportTrassMarsh ImportRoutesOfTheRoute = new fmImportTrassMarsh();
         RouteSQL RSQL = new RouteSQL(); 
@@ -108,17 +70,7 @@ namespace WindowsForms.Forms
                     mapen.MouseDown += new MouseEventHandler(mapen_MouseDown);
                     mapen.MouseMove += new MouseEventHandler(mapen_MouseMove);
                     mapen.MouseUp += new MouseEventHandler(mapen_MouseUp);
-                    mapen.MouseDoubleClick += new MouseEventHandler(mapen_MouseDoubleClick);
-
-                    //MainMap.OnPolygonEnter += new PolygonEnter(MainMap_OnPolygonEnter);
-                    //MainMap.OnPolygonLeave += new PolygonLeave(MainMap_OnPolygonLeave);
-
-                    //MainMap.OnRouteEnter += new RouteEnter(MainMap_OnRouteEnter);
-                    //MainMap.OnRouteLeave += new RouteLeave(MainMap_OnRouteLeave);
-
-                    //MainMap.Manager.OnTileCacheComplete += new TileCacheComplete(OnTileCacheComplete);
-                    //MainMap.Manager.OnTileCacheStart += new TileCacheStart(OnTileCacheStart);
-                    //MainMap.Manager.OnTileCacheProgress += new TileCacheProgress(OnTileCacheProgress);                      
+                    mapen.MouseDoubleClick += new MouseEventHandler(mapen_MouseDoubleClick);                    
                 }
                 {
                     mapen.Overlays.Add(routes);         // добавление дорог
@@ -131,43 +83,7 @@ namespace WindowsForms.Forms
                 currentMarker.IsHitTestVisible = false;
                 top.Markers.Add(currentMarker);
             }
-            logicMap.MapMenu();
-
-// конфигурация карты  
-            //    {
-            //        mapen.MapProvider = GMapProviders.OpenStreetMap;         // провайдер карты
-            //        mapen.Position = new PointLatLng(55.75393, 37.620795); // Координаты города по умолчанию
-            //        mapen.MinZoom = 0;
-            //        mapen.MaxZoom = 24;
-            //        mapen.Zoom = 9;
-            //    }
-
-            //    // события карты
-            //    {
-            //        mapen.OnMarkerEnter += new MarkerEnter(mapen_OnMarkerEnter);  // События мыши при нажатии
-            //        mapen.OnMarkerLeave += new MarkerLeave(mapen_OnMarkerLeave); //  События мыши при отпускании
-            //        mapen.MouseUp += new MouseEventHandler(mapen_MouseUp);
-            //        mapen.OnMarkerClick += new MarkerClick(mapen_OnMarkerClick);
-
-
-            //        mapen.MouseDown += new MouseEventHandler(mapen_MouseDown);
-            //    }
-            //    {
-            //        mapen.Overlays.Add(routes);         // добавление дорог
-            //        mapen.Overlays.Add(polygons);       // добавление полигонов
-            //        mapen.Overlays.Add(objects);        // добавление объектов
-            //        mapen.Overlays.Add(top);            // добавление обрамления
-            //        mapen.Overlays.Add(marshryt);       // добавление маршрута
-            //        mapen.Overlays.Add(okruga);         // добавление округов
-            //        //mapen.Overlays.Add(line);
-
-
-            //    }
-            //    currentMarker = new GMarkerGoogle(mapen.Position, GMarkerGoogleType.arrow);
-            //    currentMarker.IsHitTestVisible = false;
-            //    top.Markers.Add(currentMarker);
-
-            //}   
+            logicMap.MapMenu();  
         }
 
         #region Events
@@ -195,7 +111,7 @@ namespace WindowsForms.Forms
         void mapen_MouseUp(object sender, MouseEventArgs e)
         {
             logicMap.MouseUP(e, isMouseDown,mapen);
-            markerMenu.Show(mapen, e.Location);
+            
         }
 
         void mapen_MouseDoubleClick(object sender, MouseEventArgs e)

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using WindowsForms.GISSIGDataTableAdapters;
 
 namespace WindowsForms.Logic.SQL
@@ -58,70 +54,5 @@ namespace WindowsForms.Logic.SQL
 
         #endregion
     }
-
-    //class BindingRouteTransport:addBindingRoute
-    //{
-    //    requestTracksRoutesTableAdapter requestTracks = new requestTracksRoutesTableAdapter();
-    //    requestTracksCountTableAdapter requestCount = new requestTracksCountTableAdapter();
-    //    //-
-    //    //private void BindingSource(Label lbKoordiX, Label lbKoordiY)
-    //    //{
-    //    //    BindingSource requestTracksRoutesBindingSource = add(lbKoordiX, lbKoordiY);
-    //    //    requestTracksRoutesBindingSource.DataMember = "requestTracksRoutes";                                         // Источник списка данных
-    //    //    requestTracksRoutesBindingSource.DataSource = GISSIG;
-    //    //}
-    //    //private void BindingSource(Label lbCount)
-    //    //{
-    //    //    BindingSource requestTracksCountBindingSource = add(lbCount);
-    //    //    requestTracksCountBindingSource.DataMember = "requestTracksCount";                                         // Источник списка данных
-    //    //    requestTracksCountBindingSource.DataSource = GISSIG;
-    //    //}
-
-    //    //+
-    //    public void requestTracksRouteAndCount(ToolStripComboBox tbTheDirectionRoute, Label lbCount)
-    //    {
-    //        try
-    //        {
-
-    //            //requestTracksRoutesTableAdapter.Fill(this.gISSIGData.requestTracksRoutes, tbTheDirectionRoute.Text);
-    //            requestTracks.Fill(GISSIG.requestTracksRoutes, tbTheDirectionRoute.Text);
-    //            requestCount.Fill(GISSIG.requestTracksCount, tbTheDirectionRoute.Text);
-    //            //BindingSource(lbKoordiX, lbKoordiY);
-    //            //BindingSource(lbCount);
-    //            // MessageBox.Show(lbKoordiX.Text);                                 
-    //            //lbKoordiX.DataBindings.Clear();
-    //            //lbKoordiY.DataBindings.Clear();
-    //            //lbCount.DataBindings.Clear();
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            MessageBox.Show(ex.Message);
-    //        }
-    //    }
-    //}
-
-    //class addBindingRoute:ImportSQL
-    //{
-    //    //public BindingSource add(Label lbKoordiX,Label lbKoordiY)
-    //    //{
-    //    //    BindingSource requestTracksRoutesBindingSource = new BindingSource();
-    //    //    requestTracksRoutesBindingSource.DataMember = "requestTracksRoutes";           // Источник списка данных
-    //    //    requestTracksRoutesBindingSource.DataSource = GISSIG;                              // Источник данных
-
-    //    //    lbKoordiX.DataBindings.Add(new Binding("Text", requestTracksRoutesBindingSource, "KoordiX", true));
-    //    //    lbKoordiY.DataBindings.Add(new Binding("Text", requestTracksRoutesBindingSource, "KoordiY", true));            
-    //    //    return requestTracksRoutesBindingSource;
-    //    //}
-    //    //public BindingSource add(Label lbCount)
-    //    //{
-    //    //    BindingSource requestTracksCountBindingSource = new BindingSource();
-    //    //    requestTracksCountBindingSource.DataMember = "requestTracksCount";           // Источник списка данных
-    //    //    requestTracksCountBindingSource.DataSource = GISSIG;                              // Источник данных
-
-    //    //    lbCount.DataBindings.Add(new Binding("Text", requestTracksCountBindingSource, "Count", true));
-    //    //    return requestTracksCountBindingSource;
-    //    //}
-    //}
-
     #endregion
 }

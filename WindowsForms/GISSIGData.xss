@@ -50,9 +50,9 @@
     <Shape ID="DesignTable:requestTracksCount" ZOrder="6" X="0" Y="0" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="0" />
     <Shape ID="DesignTable:PassagenerStop" ZOrder="5" X="5613" Y="-44" Height="386" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="258" />
     <Shape ID="DesignTable:InsertPassagenerStop" ZOrder="3" X="6824" Y="-46" Height="296" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="237" />
+    <Shape ID="DesignTable:requestPassangerStopCount" ZOrder="2" X="7564" Y="-46" Height="112" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="54" />
     <Shape ID="DesignTable:SkalarPoiskPoRaiony" ZOrder="56" X="783" Y="-2" Height="241" Width="219" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="237" />
-    <Shape ID="DesignTable:requestPassangerStop" ZOrder="2" X="7194" Y="-46" Height="181" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="122" />
-    <Shape ID="DesignTable:requestPassangerStopCount" ZOrder="1" X="7564" Y="-46" Height="112" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="54" />
+    <Shape ID="DesignTable:requestPassangerStop" ZOrder="1" X="7934" Y="-46" Height="181" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="122" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:FK_Marsh_Opisanievida" ZOrder="46" LineWidth="11">

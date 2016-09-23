@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsForms.Forms
@@ -35,9 +27,9 @@ namespace WindowsForms.Forms
         private void chOk_CheckStateChanged(object sender, EventArgs e)
         {
             var ImportRoutesOfTheRoute = new Import();
-           // ImportRoutesOfTheRoute.ImportRoutesOfTheRoute(tbLine, tbColumn, tbSelect,lbRouteNamber_,lbTransportMode_);
-           // ImportRoutesOfTheRoute.ImportDirectionOfRoute(tbLine, tbColumn, tbSelect, lbRouteNamber, lbTransportMode, lbDirectionOfRoute);
-           // ImportRoutesOfTheRoute.ImportCoordinate(tbLine, tbColumn, tbSelect, lbDirectionOfRoute, lbCoordinate_X, lbCoordinate_Y, prProgressI, lbCount);
+            ImportRoutesOfTheRoute.ImportRoutesOfTheRoute(tbLine, tbColumn, tbSelect,lbRouteNamber_,lbTransportMode_);
+            ImportRoutesOfTheRoute.ImportDirectionOfRoute(tbLine, tbColumn, tbSelect, lbRouteNamber, lbTransportMode, lbDirectionOfRoute);
+            ImportRoutesOfTheRoute.ImportCoordinate(tbLine, tbColumn, tbSelect, lbDirectionOfRoute, lbCoordinate_X, lbCoordinate_Y, prProgressI, lbCount);
             ImportRoutesOfTheRoute.ImportDataAboutStops(tbLineStan, tbColumnStan, tbSelectStan, lbCoordinate_Y_stan, lbCoordinate_X_stan, lbStreet, lbAdministrativeDistrict, lbDistrict, lbTheNameOfTheStop, lbDirection, lbTransportMode_stan, lbRouteNamber_stan, prProgress2, lbCountStan);
 
             this.Close();

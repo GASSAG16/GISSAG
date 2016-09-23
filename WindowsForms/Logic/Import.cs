@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using XlR = Microsoft.Office.Interop.Excel;
-using System.IO;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 using WindowsForms.Logic;
-using WindowsForms.GISSIGDataTableAdapters;
 
 namespace WindowsForms.Forms
 {

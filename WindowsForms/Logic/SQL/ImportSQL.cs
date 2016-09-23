@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using WindowsForms.GISSIGDataTableAdapters;
 
@@ -75,8 +72,8 @@ namespace WindowsForms.Logic
             string strDirection = lbDirection.Text;
             string strRouteNamber = lbRouteNamber_stan.Text;
 
-            CoordinateX = Convert.ToDouble(lbCoordinate_X_.Text);
-            CoordinateY = Convert.ToDouble(lbCoordinate_Y_.Text);
+            CoordinateX = Convert.ToDouble(lbCoordinate_Y_.Text);
+            CoordinateY = Convert.ToDouble(lbCoordinate_X_.Text);
             
             try
             {

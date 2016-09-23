@@ -34,7 +34,7 @@ namespace WindowsForms.CustomMarkers
       /// </summary>
       [NonSerialized]
 #if !PocketPC
-      public Brush Fill = new SolidBrush(Color.FromArgb(155, Color.LightSkyBlue));
+      public Brush Fill = new SolidBrush(Color.FromArgb(155, Color.Transparent));
 #else
       public Brush Fill = new System.Drawing.SolidBrush(Color.AliceBlue);
 #endif
@@ -47,7 +47,7 @@ namespace WindowsForms.CustomMarkers
       public GMapMarkerCircle(PointLatLng p)
          : base(p)
       {
-         Radius = 150; // 100m
+         Radius = 300; // 100m
          IsHitTestVisible = false;
       }
 

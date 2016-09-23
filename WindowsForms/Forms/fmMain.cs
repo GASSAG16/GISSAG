@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace WindowsForms
@@ -12,7 +6,7 @@ namespace WindowsForms
     public partial class fmMain : Form
     {
         Form DemoMode = new Forms.fmDemoMode();
-        Form FullMode = new Forms.fmServerMode();
+        Form ServerMode = new Forms.fmServerMode();
         
         public fmMain()
         {
@@ -30,17 +24,17 @@ namespace WindowsForms
             Application.Exit();
         }
 
-        private void btFullDemo_Click(object sender, EventArgs e)
+        private void btServerMode_Click(object sender, EventArgs e)
         {
            try
            {
                 this.Hide();
-                FullMode.Show();           
+                ServerMode.Show();           
            }
            catch
            {           
                MessageBox.Show("Внимание!!! Для Вас доступен лишь демонстрационный режим!");
-               FullMode.Hide();
+               ServerMode.Hide();
                this.Show();
            }          
         }
