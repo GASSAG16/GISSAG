@@ -1,0 +1,6 @@
+{
+  "name": "GISSAG",
+  "tagline": "GAS",
+  "body": "\r\nПривет пользователь!\r\n\r\nGISSAG - это геоинформационная система, в основе которой лежит GMap.Net, наборы данных портала открытых данных города Москвы (http://data.mos.ru/).\r\nGISSAG отображает в демоверсии остановки, трассы маршрутов городского пассажирского транспорта.\r\n\r\n`Последняя версия программы: \"Version_alpha_1_0_1\"`",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
