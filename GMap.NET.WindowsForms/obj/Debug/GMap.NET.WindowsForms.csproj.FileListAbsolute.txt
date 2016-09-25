@@ -1,0 +1,14 @@
+G:\swer\Новая папка100\greatmaps\GMap.NET.WindowsForms\bin\Debug\GMap.NET.WindowsForms.dll
+G:\swer\Новая папка100\greatmaps\GMap.NET.WindowsForms\bin\Debug\GMap.NET.WindowsForms.pdb
+G:\swer\Новая папка100\greatmaps\GMap.NET.WindowsForms\bin\Debug\GMap.NET.Core.dll
+G:\swer\Новая папка100\greatmaps\GMap.NET.WindowsForms\bin\Debug\GMap.NET.Core.pdb
+G:\swer\Новая папка100\greatmaps\GMap.NET.WindowsForms\obj\Debug\GMap.NET.WindowsForms.csprojResolveAssemblyReference.cache
+G:\swer\Новая папка100\greatmaps\GMap.NET.WindowsForms\obj\Debug\GMap.NET.TilePrefetcher.resources
+G:\swer\Новая папка100\greatmaps\GMap.NET.WindowsForms\obj\Debug\System.Windows.Forms.Properties.Resources.resources
+G:\swer\Новая папка100\greatmaps\GMap.NET.WindowsForms\obj\Debug\GMap.NET.WindowsForms.csproj.GenerateResource.Cache
+G:\swer\Новая папка100\greatmaps\GMap.NET.WindowsForms\obj\Debug\GMap.NET.WindowsForms.dll
+G:\swer\Новая папка100\greatmaps\GMap.NET.WindowsForms\obj\Debug\GMap.NET.WindowsForms.pdb
+G:\swer\Новая папка100\greatmaps_\GMap.NET.WindowsForms\obj\Debug\GMap.NET.WindowsForms.csprojResolveAssemblyReference.cache
+G:\swer\Новая папка100\greatmaps_\GMap.NET.WindowsForms\obj\Debug\GMap.NET.TilePrefetcher.resources
+G:\swer\Новая папка100\greatmaps_\GMap.NET.WindowsForms\obj\Debug\System.Windows.Forms.Properties.Resources.resources
+G:\swer\Новая папка100\greatmaps_\GMap.NET.WindowsForms\obj\Debug\GMap.NET.WindowsForms.csproj.GenerateResource.Cache
