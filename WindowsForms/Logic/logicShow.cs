@@ -1,13 +1,17 @@
 ﻿using WindowsForms.CustomMarkers;
 using WindowsForms.Forms;
 using GMap.NET;
+using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace WindowsForms.Logic
@@ -15,7 +19,6 @@ namespace WindowsForms.Logic
     class logicShow : logicEventmap
     {
         readonly GMapOverlay top = new GMapOverlay();
-
         
         #region DemoMode
 
@@ -107,7 +110,92 @@ namespace WindowsForms.Logic
 
         #region ServerMode
 
-        public void TheRoutesOfUrbanPassengerTransport(BindingSource requestTracksRoutesBindingSource, Map mapen, Label lbKoordiX, Label lbKoordiY, Label lbCount)
+        #region Route
+
+        //public void TheRoutesOfUrbanPassengerTransport(BindingSource requestTracksRoutesBindingSource, Map mapen, Label lbKoordiX, Label lbKoordiY, Label lbCount)
+        //{
+        //    Overlays(mapen);
+        //    try
+        //    {
+        //        List<PointLatLng> spisok = new List<PointLatLng>();                 // Формируем в цикле список координат
+        //        {
+        //            int f = Convert.ToInt32(lbCount.Text);
+        //            for (int v = -1; v < f; v++)//
+        //            {
+        //                requestTracksRoutesBindingSource.MoveNext();
+
+        //                lbKoordiX.Text = lbKoordiX.Text.Replace(",", ".");
+        //                lbKoordiY.Text = lbKoordiY.Text.Replace(",", ".");
+
+        //                double lat = double.Parse(lbKoordiY.Text, CultureInfo.InvariantCulture);
+        //                double lng = double.Parse(lbKoordiX.Text, CultureInfo.InvariantCulture);
+
+        //                spisok.Add(new PointLatLng(lat, lng));
+        //            }
+        //        }           
+        //        GMapRoute L = new GMapRoute(spisok, "линия");
+        //        L.Stroke.Width = 5;
+        //        L.Stroke.Color = Color.Red;                                     // Настройка линии
+        //        line.Routes.Add(L);
+        //        mapen.ZoomAndCenterRoute(L);
+        //        mapen.Zoom = 15;
+        //    }
+        //    catch 
+        //    {
+        //        //специально сделано
+        //    }
+        //}
+
+        //public void TheRoutesOfUrbanPassengerStop(BindingSource requestPassangerStopBindingSource, Map mapen, 
+        //    Label lbKoordiXPassanger, Label lbKoordiYPassanger, Label lbCountPassanger, Label lbTheNameOfTheStop)
+        //{
+        //    Overlays(mapen);//Passanger
+        //    try
+        //    {
+        //        int f = Convert.ToInt32(lbCountPassanger.Text);
+        //        for (int v = -1; v < f; v++)//
+        //        {
+        //            requestPassangerStopBindingSource.MoveNext();
+
+        //            lbKoordiXPassanger.Text = lbKoordiXPassanger.Text.Replace(",", ".");
+        //            lbKoordiYPassanger.Text = lbKoordiYPassanger.Text.Replace(",", ".");
+
+        //            double lat = double.Parse(lbKoordiYPassanger.Text, CultureInfo.InvariantCulture);
+        //            double lng = double.Parse(lbKoordiXPassanger.Text, CultureInfo.InvariantCulture);
+
+
+        //            mapen.Position = new PointLatLng(lat, lng);                                           //Формирование координат
+
+        //            GMarkerGoogle m = new GMarkerGoogle(mapen.Position, GMarkerGoogleType.green_pushpin); // Установка в точке значка
+        //            GMapMarkerRect mBorders = new GMapMarkerRect(mapen.Position);                         // Установка ограничителя - квадрат
+        //            GMapMarkerCircle mBordert = new GMapMarkerCircle(mapen.Position);                      // Установка ограничителя - окружность
+
+        //            {
+        //                mBorders.InnerMarker = m;
+        //            }
+
+        //            //if (checkBox2.Checked)
+        //            //{
+        //            //    mBorders.ToolTipText = mapens.Position.ToString();
+        //            //}
+
+        //            mBorders.ToolTipText = lbTheNameOfTheStop.Text;
+        //            objects.Markers.Add(m);
+        //            objects.Markers.Add(mBorders);
+        //        }
+        //        MessageBox.Show("Завершено!");
+        //    }
+
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
+
+
+        //Переделать TheRoutesOfUrbanPassengerTransport
+        public void TheRoutesOfUrbanPassengerTransport(BindingSource requestTracksRoutesBindingSource, Map mapen, Label lbKoordiX, Label lbKoordiY, Label lbCount,
+            BindingSource x, Label lbKoordiXPassanger, Label lbKoordiYPassanger, Label lbCountPassanger, Label lbTheNameOfTheStop, CheckBox cbAreaPassanger, BindingSource x2)
         {
             Overlays(mapen);
             try
@@ -127,30 +215,74 @@ namespace WindowsForms.Logic
 
                         spisok.Add(new PointLatLng(lat, lng));
                     }
-                }           
-                GMapRoute L = new GMapRoute(spisok, "линия");
-                L.Stroke.Width = 5;
-                L.Stroke.Color = Color.Red;                                     // Настройка линии
-                line.Routes.Add(L);
-                mapen.ZoomAndCenterRoute(L);
-                mapen.Zoom = 15;
+
+                    GMapRoute L = new GMapRoute(spisok, "линия");
+                    L.Stroke.Width = 5;
+                    L.Stroke.Color = Color.Red;                                     // Настройка линии
+                    line.Routes.Add(L);
+                    mapen.ZoomAndCenterRoute(L);
+                    mapen.Zoom = 15;
+                }
+
+                clearData(lbKoordiXPassanger, lbKoordiYPassanger, lbCountPassanger, lbTheNameOfTheStop);
+                addDataDistrictsCountiesStreetAndCity(lbKoordiXPassanger, lbKoordiYPassanger, lbCountPassanger, lbTheNameOfTheStop, x, x2);
+                logicBuilding(x, mapen, lbKoordiXPassanger, lbKoordiYPassanger, lbCountPassanger, lbTheNameOfTheStop);    
             }
-            catch 
+            catch
             {
                 //специально сделано
             }
         }
 
-        public void TheRoutesOfUrbanPassengerStop(BindingSource requestPassangerStopBindingSource, Map mapen, 
-            Label lbKoordiXPassanger, Label lbKoordiYPassanger, Label lbCountPassanger, Label lbTheNameOfTheStop)
+        #endregion
+        
+        #region Bus stops in districts, counties, and city
+        
+        /// <summary>
+        ///  Один метод для 4 задач (Отображение остановок по районам/округам/улицам/городу
+        /// </summary>
+        /// <param name="x">Привязка основных данных по BindingSource</param>
+        /// <param name="mapen">gmap.net</param>
+        /// <param name="lbKoordiXPassanger">Координата X</param>
+        /// <param name="lbKoordiYPassanger">Координата Y</param>
+        /// <param name="lbCountPassanger">Число для счётчика, получаемого от сервера</param>
+        /// <param name="lbTheNameOfTheStop">Название остановки</param>
+        /// <param name="x2">Привязка кол-ва найденных остановок от сервера по BindingSource</param>
+        public void DistrictsCountiesStreetAndCity(BindingSource x, Map mapen,
+            Label lbKoordiXPassanger, Label lbKoordiYPassanger, Label lbCountPassanger, Label lbTheNameOfTheStop, BindingSource x2)
         {
-            Overlays(mapen);//Passanger
+            clearData(lbKoordiXPassanger, lbKoordiYPassanger, lbCountPassanger, lbTheNameOfTheStop);
+            addDataDistrictsCountiesStreetAndCity(lbKoordiXPassanger, lbKoordiYPassanger, lbCountPassanger, lbTheNameOfTheStop, x, x2);
+            logicBuilding(x, mapen, lbKoordiXPassanger, lbKoordiYPassanger, lbCountPassanger, lbTheNameOfTheStop);
+        }
+
+        private void clearData(Label lbKoordiXPassanger, Label lbKoordiYPassanger, Label lbCountPassanger, Label lbTheNameOfTheStop)
+        {  
+            lbKoordiYPassanger.DataBindings.Clear();
+            lbKoordiXPassanger.DataBindings.Clear();
+            lbCountPassanger.DataBindings.Clear();
+            lbTheNameOfTheStop.DataBindings.Clear();
+        }
+
+        private void addDataDistrictsCountiesStreetAndCity(Label lbKoordiXPassanger, Label lbKoordiYPassanger, Label lbCountPassanger, Label lbTheNameOfTheStop,
+           BindingSource x, BindingSource x2)
+        {
+            lbKoordiXPassanger.DataBindings.Add(new System.Windows.Forms.Binding("Text", x, "KoordiX", true));
+            lbKoordiYPassanger.DataBindings.Add(new System.Windows.Forms.Binding("Text", x, "KoordiY", true));
+            lbCountPassanger.DataBindings.Add(new System.Windows.Forms.Binding("Text", x2, "Count", true));
+            lbTheNameOfTheStop.DataBindings.Add(new System.Windows.Forms.Binding("Text", x, "TheNameOfTheStop", true));
+        }
+
+        private void logicBuilding(BindingSource DistrictsCountiesAndCityBindingSource, Map mapen, Label lbKoordiXPassanger, Label lbKoordiYPassanger, Label lbCountPassanger, Label lbTheNameOfTheStop)
+        {
+            Overlays(mapen);
+
             try
             {
                 int f = Convert.ToInt32(lbCountPassanger.Text);
-                for (int v = -1; v < f; v++)//
+                for (int v = -1; v < f; v++)
                 {
-                    requestPassangerStopBindingSource.MoveNext();
+                    DistrictsCountiesAndCityBindingSource.MoveNext();
 
                     lbKoordiXPassanger.Text = lbKoordiXPassanger.Text.Replace(",", ".");
                     lbKoordiYPassanger.Text = lbKoordiYPassanger.Text.Replace(",", ".");
@@ -159,24 +291,29 @@ namespace WindowsForms.Logic
                     double lng = double.Parse(lbKoordiXPassanger.Text, CultureInfo.InvariantCulture);
 
 
-                    mapen.Position = new PointLatLng(lat, lng);                                           //Формирование координат
+                    mapen.Position = new PointLatLng(lat, lng);                                             //Формирование координат
 
-                    GMarkerGoogle m = new GMarkerGoogle(mapen.Position, GMarkerGoogleType.green_pushpin); // Установка в точке значка
-                    GMapMarkerRect mBorders = new GMapMarkerRect(mapen.Position);                         // Установка ограничителя - квадрат
-                    GMapMarkerCircle mBordert = new GMapMarkerCircle(mapen.Position);                      // Установка ограничителя - окружность
-
+                    GMarkerGoogle m = new GMarkerGoogle(mapen.Position, GMarkerGoogleType.green_pushpin);   // Установка в точке значка
+                    GMapMarkerRect mBorders = new GMapMarkerRect(mapen.Position);                           // Установка ограничителя - квадрат
+                    GMapMarkerCircle mBordert = new GMapMarkerCircle(mapen.Position);                       // Установка ограничителя - окружность
+                    GMapMarkerCircle nrt = new GMapMarkerCircle(mapen.Position);
                     {
                         mBorders.InnerMarker = m;
                     }
 
-                    //if (checkBox2.Checked)
-                    //{
-                    //    mBorders.ToolTipText = mapens.Position.ToString();
-                    //}
-
                     mBorders.ToolTipText = lbTheNameOfTheStop.Text;
-                    objects.Markers.Add(m);
+                    mBordert.Radius = 300;
+                    mBordert.Fill = new SolidBrush(Color.Empty);
+                    
+                    //nrt.Radius = 2250;
+                    //nrt.Fill = new SolidBrush(Color.Empty);
+                    //nrt.Stroke.Color = Color.Blue;
+
+                    //objects.Markers.Add(m);
                     objects.Markers.Add(mBorders);
+                    objects.Markers.Add(mBordert);
+
+                    //objects2.Markers.Add(nrt);
                 }
                 MessageBox.Show("Завершено!");
             }
@@ -187,99 +324,23 @@ namespace WindowsForms.Logic
             }
         }
 
-
-        //Переделать TheRoutesOfUrbanPassengerTransport
-        public void TheRoutesOfUrbanPassengerTransport(BindingSource requestTracksRoutesBindingSource, Map mapen, Label lbKoordiX, Label lbKoordiY, Label lbCount,
-            BindingSource requestPassangerStopBindingSource, Label lbKoordiXPassanger, Label lbKoordiYPassanger, Label lbCountPassanger, Label lbTheNameOfTheStop, CheckBox cbAreaPassanger)
-        {
-            Overlays(mapen);
-            try
-            {
-                List<PointLatLng> spisok = new List<PointLatLng>();                 // Формируем в цикле список координат
-                {
-                    int f = Convert.ToInt32(lbCount.Text);
-                    for (int v = -1; v < f; v++)//
-                    {
-                        requestTracksRoutesBindingSource.MoveNext();
-
-                        lbKoordiX.Text = lbKoordiX.Text.Replace(",", ".");
-                        lbKoordiY.Text = lbKoordiY.Text.Replace(",", ".");
-
-                        double lat = double.Parse(lbKoordiY.Text, CultureInfo.InvariantCulture);
-                        double lng = double.Parse(lbKoordiX.Text, CultureInfo.InvariantCulture);
-
-                        spisok.Add(new PointLatLng(lat, lng));
-                    }
-                }
-                GMapRoute L = new GMapRoute(spisok, "линия");
-                L.Stroke.Width = 5;
-                L.Stroke.Color = Color.Red;                                     // Настройка линии
-                line.Routes.Add(L);
-                mapen.ZoomAndCenterRoute(L);
-                mapen.Zoom = 15;
-                {
-                    int f2 = Convert.ToInt32(lbCountPassanger.Text);
-                    for (int v = 0; v < f2; v++)//
-                    {
-                        requestPassangerStopBindingSource.MoveNext();
-
-                        lbKoordiXPassanger.Text = lbKoordiXPassanger.Text.Replace(",", ".");
-                        lbKoordiYPassanger.Text = lbKoordiYPassanger.Text.Replace(",", ".");
-
-                        double lat = double.Parse(lbKoordiYPassanger.Text, CultureInfo.InvariantCulture);
-                        double lng = double.Parse(lbKoordiXPassanger.Text, CultureInfo.InvariantCulture);
-
-
-                        mapen.Position = new PointLatLng(lat, lng);                                           //Формирование координат
-
-                        GMarkerGoogle m = new GMarkerGoogle(mapen.Position, GMarkerGoogleType.green_pushpin); // Установка в точке значка
-                        GMapMarkerRect mBorders = new GMapMarkerRect(mapen.Position);                         // Установка ограничителя - квадрат
-                        GMapMarkerCircle mBordert = new GMapMarkerCircle(mapen.Position);                      // Установка ограничителя - окружность
-
-                        {
-                            mBorders.InnerMarker = m;
-                        }
-
-                        //if (checkBox2.Checked)
-                        //{
-                        //    mBorders.ToolTipText = mapens.Position.ToString();
-                        //}
-                        //{
-                        //    if (cbAreaPassanger.Checked)
-                        //    {
-                        //        mBordert.Radius = 300;
-                        //        mBordert.Stroke.Width = 1;
-                        //        mBordert.Stroke.Color = Color.Green;
-                        //        mBordert.Fill = new SolidBrush(Color.Empty);
-                        //    }
-                        //    else 
-                        //    {
-                        //        mBordert.Overlay.Clear();
-                        //    }
-                        //}
-
-                        mBorders.ToolTipText = lbTheNameOfTheStop.Text;
-
-                        objects.Markers.Add(m);
-                        objects.Markers.Add(mBorders);
-                        //objects.Markers.Add(mBordert);
-                    }
-                    MessageBox.Show("Завершено!");
-                }
-            }
-            catch
-            {
-                //специально сделано
-            }
-        }
-
+        #endregion
 
         private void Overlays(Map mapen)
         {
             mapen.Overlays.Add(objects);        // добавление объектов на слои
             mapen.Overlays.Add(line);
+            mapen.Overlays.Add(line2);
+            mapen.Overlays.Add(objects2);
         }
 
+        public void CleanLayer(Map mapen)
+        {
+            objects.Markers.Clear();
+            objects.Clear();
+            line.Clear();
+            objects2.Clear();
+        }
         #endregion
     }
 }

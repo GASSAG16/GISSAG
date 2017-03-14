@@ -63,9 +63,9 @@
             this.lbVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbVersion.Location = new System.Drawing.Point(17, 25);
             this.lbVersion.Name = "lbVersion";
-            this.lbVersion.Size = new System.Drawing.Size(143, 17);
+            this.lbVersion.Size = new System.Drawing.Size(119, 17);
             this.lbVersion.TabIndex = 2;
-            this.lbVersion.Text = "Версия alpha_1_0_1";
+            this.lbVersion.Text = "Версия alpha_2_";
             // 
             // label4
             // 

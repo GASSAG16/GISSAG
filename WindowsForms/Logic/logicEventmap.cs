@@ -6,6 +6,7 @@ using GMap.NET.MapProviders;
 using GMap.NET;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
+using WindowsForms.GISSIGDataTableAdapters;
 
 
 
@@ -13,22 +14,22 @@ using GMap.NET.WindowsForms.Markers;
 namespace WindowsForms.Forms
 {
 
-    class logicEventmap
+    class logicEventmap:Logic.ImportSQL
     {
         // Слои 
         readonly GMapOverlay top = new GMapOverlay();
-        //public  GMapOverlay line = new GMapOverlay();
         internal readonly GMapOverlay objects = new GMapOverlay("objects");     // объекты
         internal readonly GMapOverlay routes = new GMapOverlay("routes");       // Дороги
         internal readonly GMapOverlay polygons = new GMapOverlay("polygons");   // Полигоны
-
+        internal readonly GMapOverlay objects2 = new GMapOverlay("objects2");     // объекты
+        
         // Прочее
         readonly Random rnd = new Random();
         readonly DescendingComparer ComparerIpStatus = new DescendingComparer();
 
         ContextMenu markerMenu = new ContextMenu();
         internal GMapOverlay line = new GMapOverlay();
-               
+        internal GMapOverlay line2 = new GMapOverlay();
         //bool isMouseDown = false;
 
         public void OnMarker(Map mapen, GMapMarker item, MouseEventArgs e, GMapMarker currentTransport)
@@ -79,9 +80,23 @@ namespace WindowsForms.Forms
                 // CurentRectMarker = null;
                 GMapMarkerRect rc = item as GMapMarkerRect;
                 rc.Pen.Color = Color.Blue;
-                rc.ToolTipMode = MarkerTooltipMode.Never;
+                rc.ToolTipMode = MarkerTooltipMode.Never; 
             }           
         }
+        public static void OnMarkerLeave(GMapMarker item, Map mapen)
+        {
+            if (item is GMapMarkerRect)
+            {
+                // CurentRectMarker = null;
+                GMapMarkerRect rc = item as GMapMarkerRect;
+                rc.Pen.Color = Color.Blue;
+                rc.ToolTipMode = MarkerTooltipMode.Never;
+                //----------------------------------------------------------------
+                //rc.ToolTipText = mapen.Position.ToString();//переделать//временно
+                //MessageBox.Show(mapen.Position.Lng.ToString());
+            }
+        }
+
         public void MouseMove(MouseEventArgs e, GMapMarkerRect CurentRectMarker, Map mapen, GMarkerGoogle currentMarker, GMapPolygon polygon, bool isMouseDown)
         {
             if (e.Button == MouseButtons.Left && isMouseDown)
@@ -169,7 +184,8 @@ namespace WindowsForms.Forms
             //line.IsVisibile = true;
             //mapen.Overlays.Clear();
             //routes.Clear();
-            MessageBox.Show("hf");
+            //MessageBox.Show("hf");
+            requestCoordinat.Fill(GISSIG.requestCoordinatStop, mapen.Position.Lat, mapen.Position.Lng);
         }
         //private void Method2(object sender, EventArgs e)
         //{

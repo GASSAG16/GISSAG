@@ -11,7 +11,7 @@ namespace WindowsForms.Logic
         InsertRouteTableAdapter InsertRoute = new InsertRouteTableAdapter();
         InsertDirectionOfRouteTableAdapter InsertDirection = new InsertDirectionOfRouteTableAdapter();
         InsertPassagenerStopTableAdapter InsertPassagenerStop = new InsertPassagenerStopTableAdapter();
-        
+      public  requestCoordinatStopTableAdapter requestCoordinat = new requestCoordinatStopTableAdapter();//-e,hfnmv
         double CoordinateX, CoordinateY;
 
         public void ImportMarshSQL(Label lbRouteNamber_, Label lbTransportMode_)

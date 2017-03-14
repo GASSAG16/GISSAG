@@ -43,7 +43,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>GISSAG</ProductName>
     <PublisherName>GAS</PublisherName>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -268,6 +268,7 @@
     <Compile Include="Logic\logicEventmap.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Logic\logicImage.cs" />
     <Compile Include="Logic\logicShow.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -275,6 +276,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Logic\SQL\RouteSQL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Logic\SQL\StopSQL.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">

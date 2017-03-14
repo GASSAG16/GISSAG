@@ -7,6 +7,7 @@ using GMap.NET.WindowsForms.Markers;
 using WindowsForms.Logic;
 
 
+
 namespace WindowsForms.Forms
 {
     public partial class fmDemoMode : Form
@@ -50,7 +51,7 @@ namespace WindowsForms.Forms
 
                 // конфигурация карты  
                 {
-                    mapen.MapProvider = GMapProviders.OpenStreetMap;       // провайдер карты
+                    mapen.MapProvider = GMapProviders.YandexMap;       // провайдер карты
                     mapen.MinZoom = 0;
                     mapen.MaxZoom = 24;
                     mapen.Zoom = 9;

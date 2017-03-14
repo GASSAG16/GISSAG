@@ -30,5 +30,5 @@ using System.Runtime.InteropServices;
 //[assembly: AssemblyVersion("1.0.0.0")]
 //[assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: AssemblyCopyrightAttribute("Авторские права Гришанин Алексей Сергеевич")]
-[assembly: AssemblyVersionAttribute("1.0.0.0")]
-[assembly: AssemblyFileVersionAttribute("1.0.0.0")]
+[assembly: AssemblyVersionAttribute("1.0.0.1")]
+[assembly: AssemblyFileVersionAttribute("1.0.0.2")]

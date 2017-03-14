@@ -1,12 +1,16 @@
-﻿using WindowsForms.Logic;
-using WindowsForms.Logic.SQL;
-using System;
-using System.Windows.Forms;
-using WindowsForms.CustomMarkers;
+﻿using GMap.NET;
 using GMap.NET.MapProviders;
-using GMap.NET;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Globalization;
+using System.IO;
+using System.Windows.Forms;
+using WindowsForms.CustomMarkers;
+using WindowsForms.Logic;
+using WindowsForms.Logic.SQL;
 
 namespace WindowsForms.Forms
 {
@@ -38,8 +42,10 @@ namespace WindowsForms.Forms
         #endregion
 
         logicShow StationsANDRoute = new logicShow();
+        logicImage sendImage = new logicImage();
         fmImportTrassMarsh ImportRoutesOfTheRoute = new fmImportTrassMarsh();
-        RouteSQL RSQL = new RouteSQL(); 
+        RouteSQL RSQL = new RouteSQL();
+        StopSQL SSQL = new StopSQL();
                 
         public fmServerMode()
         {
@@ -101,6 +107,7 @@ namespace WindowsForms.Forms
         void mapen_OnMarkerLeave(GMapMarker item)
         {
             logicEventmap.OnMarkerLeave(item);
+            //this.requestCoordinatStopTableAdapter.Fill(this.gISSIGData.requestCoordinatStop,mapen.Position.Lat,mapen.Position.Lng);// new System.Nullable<double>(((double)(System.Convert.ChangeType(yToolStripTextBox.Text, typeof(double))))), new System.Nullable<double>(((double)(System.Convert.ChangeType(xToolStripTextBox.Text, typeof(double))))));
         }
 
         void mapen_OnMarkerEnter(GMapMarker item)
@@ -111,12 +118,13 @@ namespace WindowsForms.Forms
         void mapen_MouseUp(object sender, MouseEventArgs e)
         {
             logicMap.MouseUP(e, isMouseDown,mapen);
-            
+            //this.requestCoordinatStopTableAdapter.Fill(this.gISSIGData.requestCoordinatStop, mapen.Position.Lat, mapen.Position.Lng);
+            //requestCoordinatStopBindingSource.MoveFirst();
         }
 
         void mapen_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            logicMap.MouseDouble(e, mapen, objects);
+            logicMap.MouseDouble(e, mapen, objects);    
         }
 
         void mapen_MouseDown(object sender, MouseEventArgs e)
@@ -129,7 +137,6 @@ namespace WindowsForms.Forms
             if (e.Button == MouseButtons.Left)
             {
                 isMouseDown = true;
-
                 if (currentMarker.IsVisible)
                 {
                     currentMarker.Position = mapen.FromLocalToLatLng(e.X, e.Y);
@@ -166,6 +173,9 @@ namespace WindowsForms.Forms
         private void fmServerMode_Load(object sender, EventArgs e)
         {
             RSQL.dataAddMarsh(tbMarsh);
+            SSQL.dataAddDistrict(tbSelectAreas);
+            SSQL.dataAreasOfEnlargement(tbSelectByDistrict);
+            StationsANDRoute.CleanLayer(mapen);
         }
 
         private void tbTheDirectionRoute_SelectedIndexChanged(object sender, EventArgs e)
@@ -174,13 +184,9 @@ namespace WindowsForms.Forms
             requestTracksCountTableAdapter.Fill(this.gISSIGData.requestTracksCount, tbTheDirectionRoute.Text);
             requestPassangerStopTableAdapter.Fill(this.gISSIGData.requestPassangerStop, tbMarsh.Text);
             requestPassangerStopCountTableAdapter.Fill(this.gISSIGData.requestPassangerStopCount, tbMarsh.Text);
-            //RSQL.dataAddPassangerStop(tbMarsh);
-            StationsANDRoute.TheRoutesOfUrbanPassengerTransport(requestTracksRoutesBindingSource, mapen, lbKoordiX, lbKoordiY, lbCount, requestPassangerStopBindingSource, lbKoordiXPassanger, lbKoordiYPassanger, lbCountCoordinatPassanger, lbTheNameOfTheStop, cbAreaPassanger);
-        }
 
-        private void tbMarsh_Click(object sender, EventArgs e)
-        {
-           
+            StationsANDRoute.TheRoutesOfUrbanPassengerTransport(requestTracksRoutesBindingSource, mapen, lbKoordiX, lbKoordiY, lbCount, requestPassangerStopBindingSource,
+                lbKoordiXPassanger, lbKoordiYPassanger, lbCountCoordinatPassanger, lbTheNameOfTheStop, cbAreaPassanger, requestPassangerStopCountBindingSource);
         }
 
         private void fmServerMode_FormClosed(object sender, FormClosedEventArgs e)
@@ -188,5 +194,83 @@ namespace WindowsForms.Forms
             Application.Exit();
         }
 
+        private void lbSendimage_Click(object sender, EventArgs e)
+        {
+            sendImage.sendImageDesktop(mapen);
+        }
+
+        private void tbSelectTheStreets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           // StationsANDRoute.DistrictsCountiesStreetAndCity(x, mapen, lbKoordiXPassanger, lbKoordiYPassanger, lbCountCoordinatPassanger, lbTheNameOfTheStop, x2);
+        }
+
+        private void tbSelectAreas_SelectedIndexChanged(object sender, EventArgs e)
+        {               
+            try
+            {
+            
+            requestDistrictPassangerStopTableAdapter.Fill(this.gISSIGData.requestDistrictPassangerStop, tbSelectAreas.Text);
+            requestDistrictPassangerStopCountTableAdapter.Fill(this.gISSIGData.requestDistrictPassangerStopCount, tbSelectAreas.Text);
+            
+            StationsANDRoute.DistrictsCountiesStreetAndCity(requestSelectAreasBindingSource, 
+                mapen, lbKoordiXPassanger, lbKoordiYPassanger, lbCountCoordinatPassanger, lbTheNameOfTheStop, requestSelectAreasCountBindingSource);
+            }
+            catch 
+            {
+                //Специально сделано, так как по умолчанию запись равна = defaut                
+            }
+        }
+
+        private void tbSelectByDistrict_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+            requestDistrictPassangerEnlargementTableAdapter.Fill(this.gISSIGData.requestDistrictPassangerEnlargement, tbSelectByDistrict.Text);
+            requestDistrictPassangerEnlargementCountTableAdapter.Fill(this.gISSIGData.requestDistrictPassangerEnlargementCount, tbSelectByDistrict.Text);
+            
+            StationsANDRoute.DistrictsCountiesStreetAndCity(requestSelectByDistrictBindingSource, 
+                mapen, lbKoordiXPassanger, lbKoordiYPassanger, lbCountCoordinatPassanger, lbTheNameOfTheStop, requestSelectByDistrictCountBindingSource);
+            }
+            catch 
+            {
+                //Специально сделано, так как по умолчанию запись равна = defaut
+                
+            }  
+        }
+
+        private void lbCleaningLayer_Click(object sender, EventArgs e)
+        {
+            StationsANDRoute.CleanLayer(mapen);
+        }
+
+
+        #region Map_navigation
+        
+        private void tbZoomUp_Click(object sender, EventArgs e)
+        {
+            mapen.Zoom = ((int)mapen.Zoom ) + 1;
+        }
+
+        private void btZoomDown_Click(object sender, EventArgs e)
+        {
+            mapen.Zoom = ((int)(mapen.Zoom )) - 1;//0.99
+        }
+
+        private void tbBearingLeft_Click(object sender, EventArgs e)
+        {
+            mapen.Bearing = ((int)(mapen.Bearing+ 0.15))+1;
+        }
+
+        private void tbBearingRight_Click(object sender, EventArgs e)
+        {
+            mapen.Bearing = ((int)(mapen.Bearing - 0.15)) - 1;
+        }
+
+        private void tbBearingReset_Click(object sender, EventArgs e)
+        {
+            mapen.Bearing = 0;
+        }
+
+        #endregion
     }
 }

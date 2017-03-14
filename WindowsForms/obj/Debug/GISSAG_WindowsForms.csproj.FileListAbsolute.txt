@@ -6,7 +6,6 @@ G:\swer\BitbucketProject\GISSAG_alfa\WindowsForms\bin\x86\Debug\protobuf-net.dll
 G:\swer\BitbucketProject\GISSAG_alfa\WindowsForms\bin\x86\Debug\GMap.NET.Core.xml
 G:\swer\BitbucketProject\GISSAG_alfa\WindowsForms\bin\x86\Debug\GMap.NET.WindowsForms.xml
 G:\swer\BitbucketProject\GISSAG_alfa\WindowsForms\bin\x86\Debug\protobuf-net.xml
-G:\swer\BitbucketProject\GISSAG_alfa\WindowsForms\obj\Debug\GISSAG_WindowsForms.csprojResolveAssemblyReference.cache
 G:\swer\BitbucketProject\GISSAG_alfa\WindowsForms\obj\Debug\WindowsForms.Forms.fmAboutGASSAG.resources
 G:\swer\BitbucketProject\GISSAG_alfa\WindowsForms\obj\Debug\WindowsForms.Forms.fmDemoMode.resources
 G:\swer\BitbucketProject\GISSAG_alfa\WindowsForms\obj\Debug\WindowsForms.Forms.fmImportTrassMarsh.resources
@@ -18,3 +17,4 @@ G:\swer\BitbucketProject\GISSAG_alfa\WindowsForms\obj\Debug\WindowsForms.Propert
 G:\swer\BitbucketProject\GISSAG_alfa\WindowsForms\obj\Debug\GISSAG_WindowsForms.csproj.GenerateResource.Cache
 G:\swer\BitbucketProject\GISSAG_alfa\WindowsForms\obj\Debug\GISSAG.exe
 G:\swer\BitbucketProject\GISSAG_alfa\WindowsForms\obj\Debug\GISSAG.pdb
+G:\swer\BitbucketProject\GISSAG_alfa\WindowsForms\obj\Debug\GISSAG_WindowsForms.csprojResolveAssemblyReference.cache
